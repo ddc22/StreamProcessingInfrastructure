@@ -10,19 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sensor/{sensorId}")
-public class SensorStateController {
+public interface SensorStateController {
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getSensorState(@PathVariable String sensorId){
-		return sensorId;
-	}
+	public String getSensorState(@PathVariable String sensorId);
 	
 	
 	@RequestMapping(value = "/{sensorState}",method = RequestMethod.PUT)
-	public ResponseEntity<?> sensorState(@PathVariable String sensorId, @PathVariable Long sensorState){
-		System.out.println(sensorId);
-		System.out.println(sensorState);
-		return new ResponseEntity<Object>(null, HttpStatus.OK);
-	}
+	public ResponseEntity<?> sensorState(@PathVariable String sensorId, @PathVariable Long sensorState);
 
 }
